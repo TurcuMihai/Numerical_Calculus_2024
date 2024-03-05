@@ -58,10 +58,10 @@ def crout_restricted(A):
 
 print(f"Parametrii programului sunt: n = {n}, t = {t}, precession e={e}\n")
  
-# A = np.random.rand(n, n)
-# b = np.random.rand(n)
-A = np.array([[2.5, 2, 2], [5, 6, 5], [5, 6, 6.5]])
-b = np.array([2,2,2])
+A = np.random.rand(n, n)
+b = np.random.rand(n)
+# A = np.array([[2.5, 2, 2], [5, 6, 5], [5, 6, 6.5]])
+# b = np.array([2,2,2])
 # A = np.array([[2, 3, 2], [2, 3, 5], [5, 6, 6.5]])
 # b = np.array([2,2,2])
 
@@ -104,6 +104,7 @@ print(det_A, "=", det(A_init))
 #     else:
 #         print(f"Division by zero detected in backward substitution at i={i}, U[i, i]={U[i, i]}")
 #         exit()
+#
 #-----------------Crout restricted--------------#
 # Forward substitution for Ly = b
 y = np.zeros_like(b, dtype=float)
@@ -146,7 +147,6 @@ print(f"||x_LU - x_lib||2 = {norm1}")
 print(f"||x_LU - A^(-1)*b_init||2 = {norm2}")
 
 #----------------------BONUS----------------------#
-
 def LU_optimized(A):
     n = len(A)
     L = np.ones(n*(n+1)//2)
@@ -167,8 +167,8 @@ def LU_optimized(A):
 
 L, U = LU_optimized(A_init)
 
-print("Vectorul L este:", L)
-print("Vectorul U este:", U)
+print("\nThe vector V:", L)
+print("The vector U:", U)
 
 # Forward substitution for Ly = b
 y = np.zeros_like(b, dtype=float)
@@ -189,4 +189,5 @@ for i in range(n-1, -1, -1):
     else:
         print(f"Division by zero detected in backward substitution at i={i}, U[i, i]={U[i, i]}")
         exit()
-print(x_LU)
+
+print("\nThe solution of the system implemented with 2 vectors L and U: ", x_LU)
