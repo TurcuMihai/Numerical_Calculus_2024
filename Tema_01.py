@@ -6,8 +6,8 @@ def find_the_minimum():
     m = 0
     u = 10**(-m)
     while (1 + u != 1):
-        u = 10**(-m)
         m = m + 1
+        u = 10**(-m)
     return u*10
 
 print("\nPrecizia masina este:", find_the_minimum(), "\n")
@@ -15,8 +15,8 @@ print("\nPrecizia masina este:", find_the_minimum(), "\n")
 
 def neasociativity():
     x = 1.0
-    y = find_the_minimum()
-    z = find_the_minimum()
+    y = find_the_minimum()/10
+    z = find_the_minimum()/10
     print("Neasociativitatea adunarii:")
     print((x + y) + z, "=", x + (y + z))
     print((x + y) + z == x + (y + z))
@@ -70,16 +70,22 @@ error_tan_9 = {a: abs(tan_9_estimations[a] - exact_values[a]) for a in random_nu
 best_estimation_tan = {}
 
 for a in random_numbers:
+    best_estimation = error_tan_4[a]
     best_estimation_tan[a] = "tan_4"
-    if error_tan_5[a] < error_tan_4[a]:
+    if error_tan_5[a] < best_estimation:
+        best_estimation = error_tan_5[a]
         best_estimation_tan[a] = "tan_5"
-    if error_tan_6[a] < error_tan_5[a]:
+    if error_tan_6[a] < best_estimation:
+        best_estimation = error_tan_6[a]
         best_estimation_tan[a] = "tan_6"
-    if error_tan_7[a] < error_tan_6[a]:
+    if error_tan_7[a] < best_estimation:
+        best_estimation = error_tan_7[a]
         best_estimation_tan[a] = "tan_7"
-    if error_tan_8[a] < error_tan_7[a]:
+    if error_tan_8[a] < best_estimation:
+        best_estimation = error_tan_8[a]
         best_estimation_tan[a] = "tan_8"
-    if error_tan_9[a] < error_tan_8[a]:
+    if error_tan_9[a] < best_estimation:
+        best_estimation = error_tan_9[a]
         best_estimation_tan[a] = "tan_9"
 
 def sin(n,a):
@@ -142,27 +148,39 @@ best_estimation_sin = {}
 best_estimation_cos = {}
 
 for a in random_numbers:
+    best_estimation = error_sin_4[a]
     best_estimation_sin[a] = "sin_4"
-    if error_sin_5[a] < error_sin_4[a]:
+    if error_sin_5[a] < best_estimation:
+        best_estimation = error_sin_5[a]
         best_estimation_sin[a] = "sin_5"
-    if error_sin_6[a] < error_sin_5[a]:
+    if error_sin_6[a] < best_estimation:
+        best_estimation = error_sin_6[a]
         best_estimation_sin[a] = "sin_6"
-    if error_sin_7[a] < error_sin_6[a]:
+    if error_sin_7[a] < best_estimation:
+        best_estimation = error_sin_7[a]
         best_estimation_sin[a] = "sin_7"
-    if error_sin_8[a] < error_sin_7[a]:
+    if error_sin_8[a] < best_estimation:
+        best_estimation = error_sin_8[a]
         best_estimation_sin[a] = "sin_8"
-    if error_sin_9[a] < error_sin_8[a]:
+    if error_sin_9[a] < best_estimation:
+        best_estimation = error_sin_9[a]
         best_estimation_sin[a] = "sin_9"
+    best_estimation = error_cos_4[a]
     best_estimation_cos[a] = "cos_4"
-    if error_cos_5[a] < error_cos_4[a]:
+    if error_cos_5[a] < best_estimation:
+        best_estimation = error_cos_5[a]
         best_estimation_cos[a] = "cos_5"
-    if error_cos_6[a] < error_cos_5[a]:
+    if error_cos_6[a] < best_estimation:
+        best_estimation = error_cos_6[a]
         best_estimation_cos[a] = "cos_6"
-    if error_cos_7[a] < error_cos_6[a]:
+    if error_cos_7[a] < best_estimation:
+        best_estimation = error_cos_7[a]
         best_estimation_cos[a] = "cos_7"
-    if error_cos_8[a] < error_cos_7[a]:
+    if error_cos_8[a] < best_estimation:
+        best_estimation = error_cos_8[a]
         best_estimation_cos[a] = "cos_8"
-    if error_cos_9[a] < error_cos_8[a]:
+    if error_cos_9[a] < best_estimation:
+        best_estimation = error_cos_9[a]
         best_estimation_cos[a] = "cos_9"
 
 print("\n")
