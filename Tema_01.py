@@ -2,6 +2,7 @@ import math
 import random
 from collections import Counter
 
+#---------Ex 1------------------------------------------------------
 def find_the_minimum():
     m = 0
     u = 10**(-m)
@@ -12,8 +13,8 @@ def find_the_minimum():
 
 print("\nPrecizia masina este:", find_the_minimum(), "\n")
 
-
-def neasociativity():
+#---------Ex 2------------------------------------------------------
+def nonassociativity():
     x = 1.0
     y = find_the_minimum()/10
     z = find_the_minimum()/10
@@ -27,8 +28,9 @@ def neasociativity():
     print("Neasociativitatea inmultirii:")
     print(x * (y * z), "=", (x * y) * z)
     print((x * y) * z == x * (y * z))
-neasociativity()
+nonassociativity()
 
+#---------Ex 3------------------------------------------------------
 
 def tan_4(a):
     return (105*a - 10*(a**3)) / (105 - 45*(a**2) + a**4)
@@ -183,15 +185,15 @@ for a in random_numbers:
         best_estimation = error_cos_9[a]
         best_estimation_cos[a] = "cos_9"
 
-print("\n")
+print("\nEstimations ranking for sin functions:")
 count_cos = Counter(best_estimation_cos.values())
 for key, count in sorted(count_cos.items(), key=lambda x: x[0], reverse=True):
     print(f"{key}: {count}")
-print("\n")
+print("\nEstimations ranking for cos functions:")
 count_sin = Counter(best_estimation_sin.values())
 for key, count in sorted(count_sin.items(), key=lambda x: x[0], reverse=True):
     print(f"{key}: {count}")
-print("\n")
+print("\nEstimations ranking for tan functions:")
 count_tan = Counter(best_estimation_tan.values())
 for key, count in sorted(count_tan.items(), key=lambda x: x[0], reverse=True):
     print(f"{key}: {count}")
