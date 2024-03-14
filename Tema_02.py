@@ -81,7 +81,6 @@ print("\ndet(A) = det(A_init)")
 det_A = 1
 for i in range(len(A)):
     det_A = det_A * A[i, i]
-print(A_init.shape)
 print(det_A, "=", det(A_init))
 
 #-----------------Crout method-----------------#
@@ -137,7 +136,7 @@ print(f"norm < 1e-9:", norm < 10 ** (-9))
 
 print("\nThe norms are:")
 
-x_lib = np.linalg.solve(A, b)
+x_lib = np.linalg.solve(A_init, b)
 A_inv = np.linalg.inv(A_init)
 
 norm1 = np.linalg.norm(x_LU - x_lib)
@@ -190,4 +189,4 @@ for i in range(n-1, -1, -1):
         print(f"Division by zero detected in backward substitution at i={i}, U[i, i]={U[i, i]}")
         exit()
 
-print("\nThe solution of the system implemented with 2 vectors L and U: ", x_LU)
+print("\nThe solution of the system implemented with 2 vectors L and U: \n", x_LU)
