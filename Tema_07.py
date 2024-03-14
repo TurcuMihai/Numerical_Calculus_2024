@@ -18,13 +18,6 @@ e = 10 ** (-t)
 
 def find_R(coefficients):
     return (np.abs(coefficients[0]) + max(np.abs(coefficients))) / np.abs(coefficients[0])
-    
-# def horner(coefficients, x):
-#     n = len(coefficients)
-#     result = coefficients[0]
-#     for i in range(1, n):
-#         result = result * x + coefficients[i]
-#     return result
 
 def horner(coefficients, x):
     n = len(coefficients)
@@ -35,7 +28,7 @@ def horner(coefficients, x):
         return result
     except OverflowError:
         print(f"Error: The result of the polynomial for x = {x} is too large to be represented.")
-        return float('inf')  # or some other value that indicates an error
+        return float('inf') 
 
 
 def muller_method(coefficients, n, e, R):
@@ -44,8 +37,6 @@ def muller_method(coefficients, n, e, R):
     left_bound = -R
     increment = 0.05
     while left_bound <= R:
-        # print(math.ceil(2*R) - i)
-        # print (f"Intervalul {left_bound} - {left_bound + increment}")
         x_0 = random.uniform(left_bound, left_bound + increment) 
         x_1 = random.uniform(left_bound, left_bound + increment)
         x_2 = random.uniform(left_bound, left_bound + increment)
@@ -112,12 +103,6 @@ roots = muller_method(coefficients, n, e, R)
 with open("roots.txt", "a") as file:
     file.write(f"{coefficients}: ")
 
-# print(len(roots), " real roots found: ")
-# if len(roots) == 0:
-#     print("No real roots found")
-#     with open("roots.txt", "a") as file:
-#         file.write("No real roots found\n")
-# else:
 ok = 0
 for root in roots:
     if np.abs(horner(coefficients, root)) < e:
@@ -157,7 +142,6 @@ def newton_raphson(e):
                 break
             y_0 = x_0 - f_x(x_0)/f_prime_x(x_0)
             if (np.abs(f_x(x_0)-f_x(y_0)) < e):
-                #print("The function is constant")
                 break
             x_1 = x_0 - (f_x(x_0)**2 + f_x(y_0)**2) / f_prime_x(x_0)*(f_x(x_0)-f_x(y_0))
             if np.abs(x_1 - x_0) < e:
@@ -165,11 +149,10 @@ def newton_raphson(e):
                 break
             x_0 = x_1
         if gasit == 1:
-            print(f_x(x_1))
             return x_1
 
-# x_star = newton_raphson(e)
-# print(x_star)
-# print("\n")
+x_star = newton_raphson(e)
+print(f_x(x_star))
+print(x_star)
 
 
