@@ -2,12 +2,10 @@ import random
 import numpy as np
 
 try:
-    #6n = int(input("Enter n: "))
     t = int(input("Enter t: "))
     if t < 6:
         raise ValueError("t must be greater at least 6")
-    # if n < 1:
-    #     raise ValueError("n must be greater than 0")
+    
 except ValueError as exception:
     print(exception)
     exit()
@@ -15,10 +13,10 @@ except ValueError as exception:
 e = 10 ** (-t)
 
 def g_1 (x, y, h):
-    return (3*f_1(x,y) - 4*f_1(x-h,y) + f_1(x-2*h,y)) / 2*h
+    return (3*f_1(x,y) - 4*f_1(x-h,y) + f_1(x-2*h,y)) / (2*h)
 
 def g_2 (x, y, h):
-    return (3*f_1(x,y) - 4*f_1(x,y-h) + f_1(x,y-2*h)) / 2*h
+    return (3*f_1(x,y) - 4*f_1(x,y-h) + f_1(x,y-2*h)) / (2*h)
 
 def f_1 (x, y):
     return x**2 + y**2 - 2*x -4*y -1
@@ -71,12 +69,12 @@ def function_minimization(e, calcul_rata, calcul_gradient):
             if rata * np.linalg.norm(gradient) < e or k > 30_000 or rata * np.linalg.norm(gradient) > 10**10:
                 break
         if rata * np.linalg.norm(gradient) <= e:
-            print(iterations)
+            print("\nNumarul de itaratii: ", iterations)
             return [x, y]
         if k > 30_000:
             e = e * 10
 
-print(function_minimization(e, 'Constant', 'Analitic'))
-print(function_minimization(e, 'Constant', 'Aproximare'))
-print(function_minimization(e, 'Variabila', 'Analitic'))
-print(function_minimization(e, 'Variabila', 'Aproximare'))
+print("Calculand gradientul functiei F folosind formula analitica si alegand o rata de invatare constanta obtinem urmatoarea aproximare a solutiei: \n", function_minimization(e, 'Constant', 'Analitic'))
+print("Calculand gradientul functiei F folosind formula aproximarii si alegand o rata de invatare constanta obtinem urmatoarea aproximare a solutiei: \n", function_minimization(e, 'Constant', 'Aproximare'))
+print("Calculand gradientul functiei F folosind formula analitica si calculand o rata de invatare variabila obtinem urmatoarea aproximare a solutiei: \n", function_minimization(e, 'Variabila', 'Analitic'))
+print("Calculand gradientul functiei F folosind formula aproximarii si calculand o rata de invatare variabila obtinem urmatoarea aproximare a solutiei: \n", function_minimization(e, 'Variabila', 'Aproximare'))

@@ -107,7 +107,7 @@ ok = 0
 for root in roots:
     if np.abs(horner(coefficients, root)) < e:
         ok = 1
-        print(horner(coefficients, root), "  ", root)
+        print("O radacina reala a polinomului este: ", root, " , iar valoarea polinomului in aceasta radacina este: ", horner(coefficients, root))
         with open("roots.txt", "a") as file:
             file.write(str(root) + " ")
 if ok == 0:
@@ -131,7 +131,7 @@ def f_prime_x(x):
         print(f"Error: For x = {x}, function return a number too large to be represented.")
         exit()
 
-def newton_raphson(e):
+def newton(e):
     while True:
         x_0 = np.random.uniform(-3,3)
         # x_0 = -3
@@ -151,8 +151,8 @@ def newton_raphson(e):
         if gasit == 1:
             return x_1
 
-x_star = newton_raphson(e)
-print(f_x(x_star))
-print(x_star)
+x_star = newton(e)
+print("\nSolutia aproximata de formula N4 este: ", x_star)
+print("Valoarea functiei, folosind aceasta solutie este: ", f_x(x_star))
 
 
